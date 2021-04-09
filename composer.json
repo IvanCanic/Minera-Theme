@@ -1,0 +1,17 @@
+{
+    "name": "ivan/minera",
+    "description": "WordPress blog theme",
+    "type": "project",
+    "license": "GPL",
+    "authors": [
+        {
+            "name": "ivan",
+            "email": "ic.raw.king@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "autoload": {
+        "psr-4": {"Inc\\": "./inc"}
+    }
+}

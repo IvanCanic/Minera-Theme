@@ -1,0 +1,126 @@
+.navbar {
+    background: $white-color;
+    width: 100%;
+    position: relative;
+    padding: 1rem 0;
+
+    & > .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    &__brand {
+
+        color: $dark-color;
+        font-size: 3rem;
+        font-weight: bold;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+
+        img {
+            max-height: 8rem;
+        }
+
+    }
+
+    &__toggle {
+        border: none;
+        justify-self: center;
+        align-self: center;
+        cursor: pointer;
+        height: 3rem;
+        background: transparent;
+        display: none;
+
+        @media(max-width: 768px) {
+            display: block;
+        }
+        
+        .dashicons {
+            color: $dark-color;
+            font-size: 3rem;
+            transition: color 0.5s ease;
+            height: 100%;
+            width: 100%;
+        }
+
+        &:hover, &:focus {
+
+            .dashicons {
+                color: $primary-color;
+            }
+        }
+    }
+
+    &__list {
+        display: flex;
+        gap: 5px;
+        transition: clip-path 5s ease;
+
+        &.open {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 0);
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            min-height: 50vh;
+            z-index: 10;
+            background: $dark-color;
+
+            ul {
+                background-color: $dark-color;
+            }
+
+            a {
+                color: $white-color;
+            }
+        }
+
+        @media(max-width: 768px) {
+            display: none;
+            clip-path: polygon(50% 50%, 50% 50%, 50% 50%, 50% 50%);
+        }
+
+        li {
+            color: $dark-color;
+            position: relative;
+        }
+
+        a {
+            display: block;
+            padding: 2rem;
+            color: $dark-color;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        a:hover, a:focus {
+            background-color: $primary-color;
+            color: $white-color;
+        }
+
+        li ul {
+            position: absolute;
+            top:100%;
+            left:50%;
+            visibility: hidden;
+            background: $white-color;
+            min-width: max-content;
+            flex-direction: column;
+            border: 1px solid $white-color;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 10px black;
+        }
+
+        li:hover > ul, li:focus > ul {
+            visibility: visible;
+            z-index: 99;
+        }
+
+    }
+}

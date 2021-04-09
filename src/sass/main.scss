@@ -1,0 +1,680 @@
+@import 'variables';
+
+/*--------------------------------------------------------------
+>>> TABLE OF CONTENTS:
+----------------------------------------------------------------
+
+	0. 	CSS Reset
+	1. 	Layout
+	2. 	Main content, core layout
+    3. 	Article
+    4.  Search
+    5.  Slider
+    6.  Popular posts component
+    7.  Main content, core layout
+    8.  Post/Page article
+    9.  Footer
+    10. Scroll Up Button
+    11. Comments Form
+    12. Keyframes Animations
+
+----------------------------------------------------------------------------- */
+
+/* -------------------------------------------------------------------------- */
+/*	0. CSS Reset
+/* -------------------------------------------------------------------------- */
+
+*, *::after, *::before {
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+    -ms-word-break: break-all;
+    word-break: break-all;
+    word-break: break-word; 
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    background: $grey-color;
+    font-size: 1.6rem;
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: $primary-color;
+    transition: color .3s ease;
+}
+
+a:hover, a:focus {
+    color: $secondary-color;
+}
+
+img {
+    max-width: 100%;
+}
+
+
+/* -------------------------------------------------------------------------- */
+/*	1. Layout
+/* -------------------------------------------------------------------------- */
+
+.container {
+    max-width: 140rem;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+/* -------------------------------------------------------------------------- */
+/*	2.  Main content, core layout
+/* -------------------------------------------------------------------------- */
+
+.wrapper {
+    width: 100%;
+    display: flex;
+    flex-flow: wrap;
+    justify-content: space-between;
+}
+
+.main {
+    flex: 0 0 68%;
+    margin-top: 2rem;
+
+    @media(max-width: 768px) {
+        flex: 1 0 100%;
+    }
+}
+
+.minera-sidebar {
+    flex: 0 0 28%;
+    margin-top: 2rem;
+
+    @media(max-width: 768px) {
+        flex: 1 0 100%;
+    }
+}
+
+/* -------------------------------------------------------------------------- */
+/*	3.  Article
+/* -------------------------------------------------------------------------- */
+
+.article {
+    width: 100%;
+    min-height: 30rem;
+    background: $white-color;
+    display: flex;
+    flex-flow: wrap;
+    letter-spacing: 1px;
+    font-size: 1.7rem;
+    position: relative;
+    margin-bottom: calc( #{$margin-article} * 2);
+
+    &__single {
+        flex-direction: column;
+
+        .article__categories{
+            justify-content: center;
+        }
+
+        .article__title {
+            text-align: center;
+        }
+    }
+
+    .sticky-icon {
+        position: absolute;
+        top:0;
+        left: 0;
+        background: $primary-color;
+        color: $white-color;
+        padding: 5px 10px;
+        text-transform: uppercase;
+        font-size: 15px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .dashicons {
+            color: $white-color;
+        }
+    }
+
+    .dashicons {
+        margin-right: 5px;
+        color: $primary-color;
+    }
+
+    &-wrapper {
+        width: 100%;
+    }
+
+    & > * {
+        flex: 1 0 50%;
+
+        @media(max-width: 768px) {
+            flex: 1 0 100%;
+        }
+    }
+
+    &__content {
+        min-height: 30rem;
+        padding: 4rem;
+    }
+
+    &__image {
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        flex: 1 0 50%;
+        min-height: 40rem;
+
+        @media(max-width: 768px) {
+            order: -1;
+        }
+    }
+
+    &__categories {
+        display: flex;
+        flex-flow: wrap;
+        color: $primary-color;
+        margin-bottom: $margin-article;
+        text-transform: capitalize;
+        gap: 1rem;
+
+        @supports not (gap: 1rem) {
+
+            & > * + * {
+                margin-left: 1rem;
+            }
+        }
+
+        a {
+            color: $dark-color;
+        }
+
+    }
+
+    &__title {
+        color: $dark-color;
+        font-size: 2.8rem;
+        margin-bottom: $margin-article;
+        font-weight: 900;
+        text-transform: uppercase;
+    }
+
+    &__author {
+        color: $dark-color;
+        margin-bottom: $margin-article;
+        font-size: 1.5rem;
+        display: flex;
+        align-items: center;
+
+        a {
+            color: $dark-color;
+            margin-left: 5px;
+        }
+    }
+
+    &__loc {
+        color: $dark-color;
+        margin-bottom: $margin-article;
+        font-size: 1.4rem;
+        display: flex;
+        align-items: center;
+
+        a {
+            color: $dark-color;
+        }
+    }
+
+    &__author a:hover, &__loc a:hover, &__categories a:hover, 
+    &__author a:focus, &__loc a:focus, &__categories a:focus {
+        color: $primary-color;
+    }
+
+    &__text {
+        color: $dark-color;
+        margin-bottom: $margin-article;
+        font-size: 1.7rem;
+        line-height: 1.4;
+        letter-spacing: 1px;
+    }
+
+    &__btn {
+        display: inline-block;
+        background-color: $dark-color;
+        color: $white-color;
+        font-weight: 900;
+        padding: 1rem 2rem;
+        transition: all .3s ease;
+
+        &:hover, &:focus {
+            opacity: 0.5;
+            color: $white-color;
+        }
+    }
+
+    &__pagination {
+        padding: 2rem;
+        display: flex;
+        justify-content: center;
+
+        & > * + * {
+            margin: 0 5px;
+        }
+
+        a, span {
+            border: 1px solid $white-color;
+            padding: 5px 10px;
+        }
+
+        a {
+            transition: all .4s linear;
+        }
+
+        span.current {
+            background: $primary-color;
+            color: $white-color;
+        }
+
+        span.dots {
+            display: none;
+        }
+
+        a:hover, a:focus {
+            background-color: $white-color;
+            color: $primary-color;
+        }
+    }
+
+    &__meta {
+        display: flex;
+        justify-content: center;
+
+        & > * + * {
+            margin-left: 1rem;
+        }
+    }
+
+    &__date {
+        font-size: 1.5rem;
+    }
+
+    &__share {
+        padding: 4rem;
+        
+        &-title {
+            display: inline-block;
+            border-top: 1px solid lighten($color: $dark-color, $amount: 80%);
+            color: $dark-color;
+            padding:  1rem 0;
+            font-weight: bold;
+            font-size: 2rem;
+        }
+
+        &-social {
+
+            a {
+                display: inline-block;
+                border: 1px solid currentColor;
+                padding: 0.5rem 1rem;
+                color: lighten($color: $dark-color, $amount: 50%);
+                transition: color .4s ease;
+            }
+
+            a:hover, a:focus {
+                color: $primary-color;
+            }
+
+            .dashicons {
+                color: currentColor;
+            }
+        }
+    }
+}
+
+/* -------------------------------------------------------------------------- */
+/*	4.  Page
+/* -------------------------------------------------------------------------- */
+
+.page {
+
+    &__title {
+        font-size: 3rem;
+        font-family: sans-serif;
+        text-transform: uppercase;
+        font-weight: bold;
+        text-align: center;
+        padding: 3rem;
+        background: $white-color;
+        margin-bottom: 1rem;
+
+        @media(max-width: 768px) {
+            //padding: 2rem;
+        }
+
+    }
+
+    &__title-query {
+        color: $primary-color;
+    }
+
+    &__subtitle {
+        font-size: 2.2rem;
+        letter-spacing: 1px;
+        margin-bottom: 2rem;
+    }
+
+    &__empty {
+        background: $white-color;
+        padding: 4rem;
+
+        @media(max-width: 768px) {
+            //padding: 2rem;
+        }
+    }
+}
+
+/* -------------------------------------------------------------------------- */
+/*	5.  Search Form
+/* -------------------------------------------------------------------------- */
+
+.search-form {
+    display: flex;
+    max-width: 80%;
+
+    &__input {
+        color: $dark-color;
+        padding: 1rem;
+        border: 1px solid $grey-color;
+        transition: border .3s ease;
+        outline: none;
+
+        &:hover, &:focus {
+            border: 1px solid $primary-color;
+        }
+    }
+
+    &__btn {
+        border: 1px solid transparent;
+        padding: 1rem;
+        background-color: $primary-color;
+        cursor: pointer;
+        transition: background-color .4s ease-in-out;
+
+        &:hover, &:focus {
+            background-color: $primary-dark-color;
+        }
+
+        .dashicons {
+            color: $white-color;
+        }
+    }
+}
+
+/* -------------------------------------------------------------------------- */
+/*	6.  Widgets
+/* -------------------------------------------------------------------------- */
+// .widget is li
+.widget {
+    margin-bottom: 3rem;
+    background-color: $white-color;
+    list-style: none;
+    padding: 3rem 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    &title {
+        color: $dark-color;
+        margin-bottom: 2rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-size: 2.2rem;
+    }
+
+    &_search {
+        align-items: center;
+    }
+
+    &_archive, &_categories {
+
+        ul {
+        display: flex;
+        flex-flow: wrap;
+        color: $primary-color;
+        margin-bottom: $margin-article;
+        text-transform: capitalize;
+        gap: 1rem;
+
+        li {
+            display: inline-block;
+            background: $dark-color;
+            padding: 0.5rem 1rem;
+
+            a {
+                color: $white-color;
+                transition: color .3s linear;
+            }
+
+            a:hover, a:focus {
+                color: $primary-color;
+            }
+        }
+
+        @supports not (gap: 1rem) {
+
+            & > * + * {
+                margin-left: 1rem;
+            }
+        }
+        }
+
+    }
+
+    &_recent_entries {
+
+        ul {
+            display: flex;
+            flex-direction: column;
+        }
+
+        li {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 1rem;
+        }
+
+        span {
+            font-size: 1.3rem;
+            color: lighten($color: $dark-color, $amount: 60%);
+            margin-bottom: 1rem;
+        }
+
+        a {
+            color: $dark-color;
+            transition: color .3s linear;
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+            letter-spacing: 1px;
+        }
+
+        a:hover, a:focus {
+            color: $primary-color;
+        }
+    }
+
+    &_media_gallery {
+
+        .gallery {
+            display: flex;
+            flex-flow: wrap;
+            gap: 5px;
+        }
+
+        img {
+            max-width: 100%;
+        }
+    }
+}
+
+/* -------------------------------------------------------------------------- */
+/*	7.  Single post addons
+/* -------------------------------------------------------------------------- */
+
+.single__post {
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 6rem 1rem;
+
+    @media(max-width:600px) {
+        grid-template-columns: 1fr;
+    }
+
+    &-left {
+
+        &-thumb, img {
+            width:10rem;
+            float: left;
+            margin: 0 3rem 3rem 0;
+        }
+    
+        &-desc {
+            color: $dark-color;
+            text-transform: uppercase;
+            text-align: left;
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+            letter-spacing: -0.5px;
+        }
+
+        &-title {
+            text-align: left;
+            
+        }
+
+        a {
+            color: $primary-color;
+            font-size: 2rem;
+            text-decoration: none;
+            transition: color .3s ease;
+        }
+
+        a:hover, a:focus {
+            color: $dark-color;
+        }
+
+    }
+
+    &-right {
+
+        &-thumb, img {
+            width:10rem;
+            float: right;
+            margin: 0 0 3rem 3rem;
+        }
+    
+        &-desc {
+            color: $dark-color;
+            text-transform: uppercase;
+            text-align: right;
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+            letter-spacing: -0.5px;
+        }
+
+        &-title {
+            text-align: right;
+        }
+
+        a {
+            color: $primary-color;
+            font-size: 2rem;
+            text-decoration: none;
+            transition: color .4s ease;
+        }
+
+        a:hover, a:focus {
+            color: $dark-color;
+        }
+        
+    }
+}
+
+
+/* -------------------------------------------------------------------------- */
+/*	7.  Comments
+/* -------------------------------------------------------------------------- */
+
+.main__comments {
+
+    h2 {
+        text-align: center;
+        margin-bottom: 3rem;
+        text-transform: uppercase;
+        font-size: 2rem;
+        color: $dark-color;
+    }
+
+    p {
+        margin-bottom: 1rem;
+    }
+
+    .comment-reply-title {
+        margin-bottom: 1rem;
+        color: darken($color: $grey-color, $amount: 50%);
+    }
+
+    .comment-notes {
+        color: darken($color: $grey-color, $amount: 50%);
+    }
+
+    .comment-form {
+        max-width: 500px;
+    }
+
+    .comment-form-comment, .comment-form-author, .comment-form-email, .comment-form-url {
+        display: flex;
+        flex-direction: column;
+
+        input, textarea {
+            padding: 1rem;
+        }
+    }
+
+    .form-submit {
+        input {
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            text-transform: uppercase;
+        }
+    }
+
+}
+
+/* -------------------------------------------------------------------------- */
+/*	8.  Menu
+/* -------------------------------------------------------------------------- */
+
+@import 'menu';
+
+/* -------------------------------------------------------------------------- */
+/*	9.  Header
+/* -------------------------------------------------------------------------- */
+
+.header {
+    width: 100%;
+    min-height: 30rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
