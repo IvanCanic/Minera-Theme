@@ -60,6 +60,11 @@ img {
     max-width: 100%;
 }
 
+pre {
+    white-space: pre;
+    white-space: pre-wrap;
+}
+
 
 /* -------------------------------------------------------------------------- */
 /*	1. Layout
@@ -427,9 +432,16 @@ img {
     background-color: $white-color;
     list-style: none;
     padding: 3rem 2rem;
+    width:90%;
+    margin-left: auto;
+    margin-right: auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
+
+    @media(max-width: 768px) {
+        width:100%;
+    }
 
     &title {
         color: $dark-color;
@@ -677,4 +689,52 @@ img {
     align-items: center;
     background-repeat: no-repeat;
     background-size: cover;
+
+    &__title, &__subtitle {
+        color: $dark-color;
+        text-align: center;
+        letter-spacing: 1px;
+    }
+
+    &__title {
+        font-size: 4rem;
+        text-transform: uppercase;
+        margin-bottom: 2rem;
+    }
+
+    &__subtitle {
+        font-size: 2rem;
+    }
+}
+
+
+/* -------------------------------------------------------------------------- */
+/*	10.  WordPress default classes
+/* -------------------------------------------------------------------------- */
+
+@import 'wp-default';
+
+/* -------------------------------------------------------------------------- */
+/*	11.  Keyframes/Animations
+/* -------------------------------------------------------------------------- */
+@keyframes minera_menu_open {
+    from {
+        clip-path: polygon(50% 50%, 50% 50%, 50% 50%, 50% 50%);
+    }
+
+    to {
+        clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 0);
+    }
+}
+
+@keyframes minera_menu_slide_down {
+    from {
+        height:0;
+        min-height:0;
+    }
+
+    to {
+        height:auto;
+        min-height:50vh;
+    }
 }

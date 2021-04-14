@@ -10,7 +10,7 @@
 
     <?php printf('<h2 class="page__title">%1$s "<span class="page__title-query">%2$s</span>"</h2>', esc_html( 'Results for:', 'minera' ), esc_html( get_search_query() )); ?>
 
-    <div class="container wrapper">
+    <div id="content" class="container wrapper">
 
         <main class="main">
 

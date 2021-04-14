@@ -18,7 +18,7 @@ class Minera {
 		// Load class.
 		Scripts::get_instance();
 		Sidebar::get_instance();
-		//Menus::get_instance();
+		Menus::get_instance();
 		//Meta_Boxes::get_instance();
 		//Sidebars::get_instance();
 		//Blocks::get_instance();

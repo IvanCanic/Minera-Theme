@@ -49,6 +49,10 @@ a:hover, a:focus {
 img {
   max-width: 100%; }
 
+pre {
+  white-space: pre;
+  white-space: pre-wrap; }
+
 /* -------------------------------------------------------------------------- */
 /*	1. Layout
 /* -------------------------------------------------------------------------- */
@@ -293,9 +297,15 @@ img {
   background-color: #ffffff;
   list-style: none;
   padding: 3rem 2rem;
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
   display: flex;
   flex-direction: column;
   justify-content: center; }
+  @media (max-width: 768px) {
+    .widget {
+      width: 100%; } }
   .widgettitle {
     color: #020202;
     margin-bottom: 2rem;
@@ -477,6 +487,8 @@ img {
     display: flex;
     gap: 5px;
     transition: clip-path 5s ease; }
+    .navbar__list ul {
+      z-index: 11; }
     .navbar__list.open {
       display: flex;
       flex-direction: column;
@@ -486,11 +498,14 @@ img {
       top: 100%;
       left: 0;
       width: 100%;
-      min-height: 50vh;
+      min-height: 100vh;
       z-index: 10;
       background: #020202; }
+      .navbar__list.open .menu-list-parents {
+        color: #ffffff; }
       .navbar__list.open ul {
-        background-color: #020202; }
+        background-color: #020202;
+        z-index: 11; }
       .navbar__list.open a {
         color: #ffffff; }
     @media (max-width: 768px) {
@@ -516,7 +531,7 @@ img {
       left: 50%;
       visibility: hidden;
       background: #ffffff;
-      min-width: max-content;
+      min-width: 200px;
       flex-direction: column;
       border: 1px solid #ffffff;
       transition: all 0.3s ease;
@@ -524,6 +539,13 @@ img {
     .navbar__list li:hover > ul, .navbar__list li:focus > ul {
       visibility: visible;
       z-index: 99; }
+
+.menu-list-parents::before {
+  content: "\021D3";
+  position: absolute;
+  right: 5%;
+  top: 50%;
+  transform: translateY(-50%); }
 
 /* -------------------------------------------------------------------------- */
 /*	9.  Header
@@ -536,6 +558,146 @@ img {
   align-items: center;
   background-repeat: no-repeat;
   background-size: cover; }
+  .header__title, .header__subtitle {
+    color: #020202;
+    text-align: center;
+    letter-spacing: 1px; }
+  .header__title {
+    font-size: 4rem;
+    text-transform: uppercase;
+    margin-bottom: 2rem; }
+  .header__subtitle {
+    font-size: 2rem; }
+
+/* -------------------------------------------------------------------------- */
+/*	10.  WordPress default classes
+/* -------------------------------------------------------------------------- */
+.size-auto,
+.size-full,
+.size-large,
+.size-medium,
+.size-thumbnail {
+  max-width: 100%;
+  height: auto; }
+
+.bypostauthor {
+  display: block; }
+
+.gallery-caption {
+  display: block; }
+
+/* =WordPress Core
+-------------------------------------------------------------- */
+.alignnone {
+  margin: 5px 20px 20px 0; }
+
+.aligncenter,
+div.aligncenter {
+  display: block;
+  margin: 5px auto 5px auto; }
+
+.alignright {
+  float: right;
+  margin: 5px 0 20px 20px; }
+
+.alignleft {
+  float: left;
+  margin: 5px 20px 20px 0; }
+
+a img.alignright {
+  float: right;
+  margin: 5px 0 20px 20px; }
+
+a img.alignnone {
+  margin: 5px 20px 20px 0; }
+
+a img.alignleft {
+  float: left;
+  margin: 5px 20px 20px 0; }
+
+a img.aligncenter {
+  display: block;
+  margin-left: auto;
+  margin-right: auto; }
+
+.wp-caption {
+  background: #fff;
+  border: 1px solid #f0f0f0;
+  max-width: 96%;
+  /* Image does not overflow the content area */
+  padding: 5px 3px 10px;
+  text-align: center; }
+
+.wp-caption.alignnone {
+  margin: 5px 20px 20px 0; }
+
+.wp-caption.alignleft {
+  margin: 5px 20px 20px 0; }
+
+.wp-caption.alignright {
+  margin: 5px 0 20px 20px; }
+
+.wp-caption img {
+  border: 0 none;
+  height: auto;
+  margin: 0;
+  max-width: 98.5%;
+  padding: 0;
+  width: auto; }
+
+.wp-caption p.wp-caption-text {
+  font-size: 11px;
+  line-height: 17px;
+  margin: 0;
+  padding: 0 4px 5px; }
+
+/* Text meant only for screen readers. */
+.screen-reader-text {
+  border: 0;
+  clip: rect(1px, 1px, 1px, 1px);
+  clip-path: inset(50%);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute !important;
+  width: 1px;
+  word-wrap: normal !important;
+  /* Many screen reader and browser combinations announce broken words as they would appear visually. */ }
+
+.screen-reader-text:focus {
+  background-color: #eee;
+  clip: auto !important;
+  clip-path: none;
+  color: #444;
+  display: block;
+  font-size: 1em;
+  height: auto;
+  left: 5px;
+  line-height: normal;
+  padding: 15px 23px 14px;
+  text-decoration: none;
+  top: 5px;
+  width: auto;
+  z-index: 100000;
+  /* Above WP toolbar. */ }
+
+/* -------------------------------------------------------------------------- */
+/*	11.  Keyframes/Animations
+/* -------------------------------------------------------------------------- */
+@keyframes minera_menu_open {
+  from {
+    clip-path: polygon(50% 50%, 50% 50%, 50% 50%, 50% 50%); }
+  to {
+    clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 0); } }
+
+@keyframes minera_menu_slide_down {
+  from {
+    height: 0;
+    min-height: 0; }
+  to {
+    height: auto;
+    min-height: 50vh; } }
 
 
 /*# sourceMappingURL=main.css.map*/

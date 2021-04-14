@@ -13,7 +13,7 @@
         <?php esc_html_e('OOPS! That page can\'t be found.', 'minera'); ?>
     </h2>
 
-    <div class="container wrapper">
+    <div id="content" class="container wrapper">
 
         <main class="main">
 

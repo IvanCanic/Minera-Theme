@@ -8,7 +8,7 @@
 
 <?php get_header( ); ?> index
 
-    <div class="container wrapper">
+    <div id="content" class="container wrapper">
 
         <main class="main">
 

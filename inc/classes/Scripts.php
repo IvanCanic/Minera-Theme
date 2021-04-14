@@ -29,6 +29,7 @@ class Scripts {
     
         wp_enqueue_style( 'dashicons' );
         wp_enqueue_style( 'minera-css', MINERA_DIR_URI . '/assets/css/main.css', array(), $minera_ver_num, 'all' );
+        wp_enqueue_style( 'default-css', get_stylesheet_uri(), array(), $minera_ver_num, 'all' );
 
     }
 

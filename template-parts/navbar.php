@@ -23,22 +23,27 @@
     <button type="button" class="navbar__toggle">
         <span class="dashicons dashicons-menu-alt3"></span>
     </button>
-    <ul class="navbar__list">
-        <li><a href="#">Blog</a></li>
-        <li>
-            <ul>
-                <li><a href="#">Blog</a></li>
-                <li>
-                    <ul>
-                        <li><a href="#">Blog</a></li>
-                        <li><a href="#">Kontakt</a></li>
-                        <li><a href="#">O meni</a></li>
-                    </ul>
-                    <a href="#">Kontakt</a></li>
-                <li><a href="#">O meni</a></li>
-            </ul>
-            <a href="#">Kontakt</a></li>
-        <li><a href="#">O meni</a></li>
-    </ul>
+    <?php 
+        wp_nav_menu( [ 
+            'menu'   => '',
+            'container'            => '',
+            'container_class'      => '',
+            'container_id'         => '',
+            'container_aria_label' => '',
+            'menu_class'           => 'navbar__list',
+            'menu_id'              => '',
+            'echo'                 => true,
+            'fallback_cb'          => false,
+            'before'               => '',
+            'after'                => '',
+            'link_before'          => '',
+            'link_after'           => '',
+            'items_wrap'           => '<ul id="%1$s" class="%2$s">%3$s</ul>',
+            'item_spacing'         => 'preserve',
+            'depth'                => 0,
+            'walker'               => '',
+            'theme_location'       => 'primary'
+        ]);
+    ?>
 </div>
 </nav>

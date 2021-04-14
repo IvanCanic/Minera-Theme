@@ -10,7 +10,7 @@
 
     <?php the_title( '<h2 class="page__title">','</h2>' ); ?>
 
-    <div class="container wrapper">
+    <div id="content" class="container wrapper">
 
         <main class="main">
 
