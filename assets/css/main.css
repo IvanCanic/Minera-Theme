@@ -557,7 +557,8 @@ pre {
   justify-content: center;
   align-items: center;
   background-repeat: no-repeat;
-  background-size: cover; }
+  background-size: cover;
+  background-position: center; }
   .header__title, .header__subtitle {
     color: #020202;
     text-align: center;

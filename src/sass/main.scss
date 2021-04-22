@@ -689,6 +689,7 @@ pre {
     align-items: center;
     background-repeat: no-repeat;
     background-size: cover;
+    background-position: center;
 
     &__title, &__subtitle {
         color: $dark-color;

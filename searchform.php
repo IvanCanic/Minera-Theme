@@ -13,6 +13,7 @@
         name="s" 
         placeholder="<?php echo esc_attr_x( 'Search ...', 'placeholder', 'minera' ); ?>" 
         value="<?php echo esc_attr(get_search_query()); ?>"
+        tabindex="1";
     >
     <button type="submit" class="search-form__btn"><span class="dashicons dashicons-search"></span></button>
 </form>

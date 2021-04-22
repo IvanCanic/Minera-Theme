@@ -45,9 +45,7 @@ class Minera {
 
 		add_theme_support( 'title-tag' );
 
-		add_theme_support(
-			'custom-logo',
-			[
+		add_theme_support('custom-logo', [
 				'header-text' => [
 					'site-title',
 					'site-description',
@@ -59,18 +57,15 @@ class Minera {
 			]
 		);
 
-		add_theme_support(
-			'custom-background',
-			[
+		add_theme_support('custom-background',[
 				'default-color' => 'ffffff',
 				'default-image' => '',
 				'default-repeat' => 'no-repeat',
 			]
 		);
 
-		add_theme_support( 
-			'custom-header', 
-			[   'default-image'      => '',
+		add_theme_support( 'custom-header', [   
+				'default-image'      => '',
 				'default-text-color' => 'ffffff',
 				'width'              => 1000,
 				'height'             => 250,
